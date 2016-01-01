@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="stopFile" class="java.io.File">
+		<constructor-arg index="0" type="java.lang.String" value="${stop.file.path}" /> 
+	</bean>
+
+	<!-- List Listener -->
+	<bean id="messageListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
+		<property name="listener">
+			<bean class="io.jms.receiver.receiver.impl.MessageListener"/>
+		</property>
+		<property name="queueName" value="MessageQueue"/>
+	</bean>
+	<bean id="countListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
+		<property name="listener">
+			<bean class="io.jms.receiver.receiver.impl.CountListener"/>
+		</property>
+		<property name="queueName" value="CountQueue"/>
+	</bean>
+
+	<util:list id="receiverList" value-type="io.jms.receiver.runnable.CommonJmsReceiver">
+		<ref bean="messageListener" />
+		<ref bean="countListener" />
+	</util:list>
+
+	<bean id="receiverThreadManager" class="io.jms.receiver.runnable.ReceiverThreadManager">
+	</bean>
+
+</beans>
