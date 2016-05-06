@@ -70,8 +70,7 @@ public class CommonJmsReceiver implements Runnable {
             }
 
             receiver.close();
-            session.close();   
-
+            session.close();
             connection.close();
         } catch (JMSException e) {
         	logger.error("Jms server is dead ?",e);

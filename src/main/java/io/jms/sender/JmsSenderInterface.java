@@ -8,6 +8,6 @@ public interface JmsSenderInterface {
 
     public void send(Object obj) throws JMSException;
 
-    public Message createMessage(Session session, Object obj)
-            throws JMSException;
+    public Message createMessage(Session session, Object obj) throws JMSException;
+
 }

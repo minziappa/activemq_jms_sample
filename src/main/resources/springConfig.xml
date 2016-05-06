@@ -22,4 +22,5 @@
 	<!-- Common Resource -->
 	<import resource="classpath:spring/common.xml"/>
 	<import resource="classpath:spring/receiver.xml"/>
+
 </beans>

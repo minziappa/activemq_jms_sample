@@ -58,7 +58,7 @@ public abstract class SimpleJmsSenderBase implements JmsSenderInterface {
         session.close();
         connection.close();
     }
-    
+
     /* (非 Javadoc)
      * @see jp.ameba.jms.sender.JmsSenderInterface#createMessage(javax.jms.Session, java.lang.Object)
      */

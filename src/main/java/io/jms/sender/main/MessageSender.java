@@ -9,10 +9,8 @@ public class MessageSender {
     public static void main(String[] args) {
         try {
             SimpleObjectJmsSender sender = new SimpleObjectJmsSender("tcp://localhost:61616","MessageQueue");
-
-            String msg = "test message";
+            String msg = "test message2";
             sender.send(msg);
-
         } catch (JMSException e) {
             e.printStackTrace();
         }

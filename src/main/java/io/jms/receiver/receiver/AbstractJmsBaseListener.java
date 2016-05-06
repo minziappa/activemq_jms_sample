@@ -20,7 +20,7 @@ public abstract class AbstractJmsBaseListener implements ExceptionListener, Mess
     public void onException(JMSException e){
     	logger.warn("JMS Exception is occurred ! ",e);
     }
-    
+
     /* (非 Javadoc)
      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)
      */
