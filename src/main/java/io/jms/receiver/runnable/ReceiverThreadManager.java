@@ -42,11 +42,11 @@ public class ReceiverThreadManager implements Runnable {
             CommonJmsReceiver receiver = (CommonJmsReceiver) ite.next();
             logger.info("url >> " + jmsUrl);
             receiver.init(jmsUrl);
-            Thread th = new Thread(receiver);
-            th.start();
+            Thread thread = new Thread(receiver);
+            thread.start();
         }
-        Thread man = new Thread(this);
-        man.start();
+        Thread mainThread = new Thread(this);
+        mainThread.start();
     }
 
     /* (非 Javadoc)

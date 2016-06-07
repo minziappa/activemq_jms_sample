@@ -14,25 +14,33 @@
 	</bean>
 
 	<!-- List Listener -->
+	<!-- 1. message Listener -->
 	<bean id="messageListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
 		<property name="listener">
 			<bean class="io.jms.receiver.receiver.impl.MessageListener"/>
 		</property>
 		<property name="queueName" value="MessageQueue"/>
 	</bean>
+	<!-- 2. count Listener -->
 	<bean id="countListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
 		<property name="listener">
 			<bean class="io.jms.receiver.receiver.impl.CountListener"/>
 		</property>
 		<property name="queueName" value="CountQueue"/>
 	</bean>
+	<!-- 3. email Listener -->
+	<bean id="emailListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
+		<property name="listener">
+			<bean class="io.jms.receiver.receiver.impl.EmailListener"/>
+		</property>
+		<property name="queueName" value="MailQueue"/>
+	</bean>
 
 	<util:list id="receiverList" value-type="io.jms.receiver.runnable.CommonJmsReceiver">
 		<ref bean="messageListener" />
 		<ref bean="countListener" />
+		<ref bean="emailListener" />
 	</util:list>
 
-	<bean id="receiverThreadManager" class="io.jms.receiver.runnable.ReceiverThreadManager">
-	</bean>
-
+	<bean id="receiverThreadManager" class="io.jms.receiver.runnable.ReceiverThreadManager"/>
 </beans>

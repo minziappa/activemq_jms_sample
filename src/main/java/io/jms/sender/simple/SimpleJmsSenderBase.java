@@ -53,7 +53,7 @@ public abstract class SimpleJmsSenderBase implements JmsSenderInterface {
         Message msg = createMessage(session, obj);
 
         sender.send(msg);
-        
+
         sender.close();
         session.close();
         connection.close();

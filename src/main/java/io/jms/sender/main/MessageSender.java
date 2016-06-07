@@ -8,7 +8,7 @@ public class MessageSender {
 
     public static void main(String[] args) {
         try {
-            SimpleObjectJmsSender sender = new SimpleObjectJmsSender("tcp://localhost:61616","MessageQueue");
+            SimpleObjectJmsSender sender = new SimpleObjectJmsSender("tcp://localhost:61616","messageQueue");
             String msg = "test message2";
             sender.send(msg);
         } catch (JMSException e) {
