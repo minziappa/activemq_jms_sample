@@ -21,7 +21,8 @@ public class EmailListener extends AbstractJmsBaseListener {
         if(mes instanceof ObjectMessage){
             ObjectMessage objMessage = (ObjectMessage) mes;
             try {
-                Map<String, String> map = (Map<String, String>)objMessage.getObject();
+                @SuppressWarnings("unchecked")
+				Map<String, String> map = (Map<String, String>)objMessage.getObject();
 
                 // To send email
                 String strEmailAddress = map.get("to_address");
