@@ -3,16 +3,13 @@ package io.jms.sender.main;
 import io.jms.receiver.entities.bean.CountBean;
 import io.jms.sender.simple.SimpleObjectJmsSender;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.jms.JMSException;
 
-public class CountSender {
+public class ObjectSender {
 
     public static void main(String[] args) {
         try {
-            SimpleObjectJmsSender sender = new SimpleObjectJmsSender("tcp://localhost:61616","countQueue");
+            SimpleObjectJmsSender sender = new SimpleObjectJmsSender("tcp://localhost:61616","objectQueue");
 
             // Object
             CountBean cb = new CountBean();

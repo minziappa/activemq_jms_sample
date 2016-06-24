@@ -9,9 +9,9 @@ import javax.jms.ObjectMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MessageListener extends AbstractJmsBaseListener {
+public class TextListener extends AbstractJmsBaseListener {
 
-    private Logger logger = LoggerFactory.getLogger(MessageListener.class);
+    private Logger logger = LoggerFactory.getLogger(TextListener.class);
 
     @Override
     public void onMessage(Message mes) {

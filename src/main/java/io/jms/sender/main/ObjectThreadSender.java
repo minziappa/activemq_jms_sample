@@ -1,4 +1,4 @@
-package io.jms.sender.sample;
+package io.jms.sender.main;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -10,7 +10,10 @@ import javax.jms.QueueConnectionFactory;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class CountSender {
+import io.jms.sender.bean.Counter;
+import io.jms.sender.runnable.ObjectRunnable;
+
+public class ObjectThreadSender {
 
     public static void main(String[] args){
         int threads = 50;
@@ -20,12 +23,12 @@ public class CountSender {
         ScheduledExecutorService  es = Executors.newScheduledThreadPool(threads);
 
         try {
-            QueueConnectionFactory factory = new ActiveMQConnectionFactory("tcp://172.17.2.52:61616");
+            QueueConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
             QueueConnection connection = factory.createQueueConnection();
             connection.start();
 
            for(int i=0;i<threads;i++){
-                CounterThread run = new CounterThread(connection ,"CountQueue");
+        	   ObjectRunnable run = new ObjectRunnable(connection ,"objectQueue");
                 es.scheduleAtFixedRate(run,0,1000,TimeUnit.MILLISECONDS);
             }
             while(timeOut >= System.currentTimeMillis()){
