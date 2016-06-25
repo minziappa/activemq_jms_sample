@@ -26,7 +26,7 @@ If you want to add a queue, need to add a receiver as below
 ```
 <bean id="oneListener" class="io.jms.receiver.runnable.CommonJmsReceiver">
 	<property name="listener">
-		<bean class="io.jms.receiver.receiver.impl.EneListener"/>
+		<bean class="io.jms.receiver.receiver.impl.OneListener"/>
 	</property>
 	<property name="queueName" value="oneQueue"/>
 </bean>
