@@ -46,7 +46,6 @@ dependencies {
 	compile 'org.apache.commons:commons-email:1.4'
 	compile 'velocity-tools:velocity-tools:1.4'
 	compile 'velocity:velocity-dep:1.4'
-	compile 'io.utility:api:0.1'
 	testCompile 'junit:junit:4.12'
 }
 
