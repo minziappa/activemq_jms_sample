@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.jms.JMSException;
 
-public class EmailSender {
+public class SimpleEmailSender {
 
     public static void main(String[] args) {
         try {

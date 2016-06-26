@@ -4,7 +4,7 @@ import io.jms.sender.simple.SimpleObjectJmsSender;
 
 import javax.jms.JMSException;
 
-public class TextSender {
+public class SimpleTextSender {
 
     public static void main(String[] args) {
         try {
