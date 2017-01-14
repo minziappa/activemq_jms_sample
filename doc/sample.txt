@@ -1,0 +1,24 @@
+■ connect JMS server
+<component name="brokerUrl" class="java.lang.String">
+<arg>"failover://(tcp://172.0.0.1:61616,tcp://localhost:61616)?randomize=false"</arg>
+</component>
+
+■ Set Lister class
+<component name="updatePing" class="io.sample.receiver.common.CommonJmsReceiver">
+<property name="listener">
+<component class="io.sample.listener.impl.UpdatePingListener">
+<property name="maxThreads">10</property>
+<property name="timeout">15000</property>
+</component>
+</property>
+<property name="queueName">"UpdatePingQueue"</property>
+</component>
+※	queueName - queue name.
+
+・Have to start the Listener class.
+<component class="io.sample.receiver.common.ReceiverThreadManager">
+<property name="stopFilePath">"/usr/local/jms/stop.txt"</property>
+<property name="url">brokerUrl</property>
+<initMethod>#self.addReceiver(updatePing)</initMethod>
+</component>
+※	<initMethod>#self.addReceiver(updatePing)</initMethod> -> Set the listener to start
